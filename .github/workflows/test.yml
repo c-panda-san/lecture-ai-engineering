@@ -39,3 +39,17 @@ jobs:
     - name: Run model tests
       run: |
         pytest -s day5/演習3/tests/test_model.py -v
+
+    - name: Set up Git user
+      run: |
+        git config --global user.email "tatsuro.yokoi@gmail.com"
+        git config --global user.name "c-panda-san"
+
+    - name: Add and commit baseline accuracy file
+      run: |
+        git add day5/演習3/models/baseline_accuracy.txt
+        git commit -m "Update baseline_accuracy.txt [skip ci]" || echo "No changes to commit"
+        git push origin HEAD:${GITHUB_REF#refs/heads/}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
