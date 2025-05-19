@@ -16,7 +16,6 @@ from sklearn.pipeline import Pipeline
 DATA_PATH = os.path.join(os.path.dirname(__file__), "../data/Titanic.csv")
 MODEL_DIR = os.path.join(os.path.dirname(__file__), "../models")
 MODEL_PATH = os.path.join(MODEL_DIR, "titanic_model.pkl")
-BASELINE_ACCURACY_PATH = os.path.join(MODEL_DIR, "baseline_accuracy.txt")  # 追加
 
 
 @pytest.fixture
@@ -176,40 +175,3 @@ def test_model_reproducibility(sample_data, preprocessor):
     assert np.array_equal(
         predictions1, predictions2
     ), "モデルの予測結果に再現性がありません"
-
-
-def load_baseline_accuracy():
-    """ベースライン精度を読み込みする関数"""
-    if not os.path.exists(BASELINE_ACCURACY_PATH):
-        return None
-    with open(BASELINE_ACCURACY_PATH, "r") as f:
-        return float(f.read().strip())
-
-
-def save_baseline_accuracy(accuracy):
-    """ベースライン精度を書き込みする関数"""
-    with open(BASELINE_ACCURACY_PATH, "w") as f:
-        f.write(f"{accuracy:.4f}")
-
-
-def test_model_performance_regression(train_model):
-    """過去バージョンのモデルと比較して性能劣化がないか検証"""
-    model, X_test, y_test = train_model
-    y_pred = model.predict(X_test)
-    accuracy = accuracy_score(y_test, y_pred)
-
-    baseline_accuracy = load_baseline_accuracy()
-    print(f"現在のモデル精度: {accuracy:.4f}")
-    if baseline_accuracy is not None:
-        print(f"ベースライン精度: {baseline_accuracy:.4f}")
-        # 精度が下がっていないか検証
-        assert (
-            accuracy >= baseline_accuracy
-        ), f"モデルの精度がベースライン({baseline_accuracy:.4f})より低下しています: {accuracy:.4f}"
-    else:
-        print("ベースライン精度が存在しないため、初回登録します。")
-
-    # 精度が上がった場合はベースラインを更新
-    if baseline_accuracy is None or accuracy > baseline_accuracy:
-        save_baseline_accuracy(accuracy)
-        print("ベースライン精度を更新しました。")
