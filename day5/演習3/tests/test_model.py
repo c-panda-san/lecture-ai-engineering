@@ -203,9 +203,9 @@ def test_model_performance_regression(train_model):
     if baseline_accuracy is not None:
         print(f"ベースライン精度: {baseline_accuracy:.4f}")
         # 精度が下がっていないか検証
-        assert accuracy >= baseline_accuracy, (
-            f"モデルの精度がベースライン({baseline_accuracy:.4f})より低下しています: {accuracy:.4f}"
-        )
+        assert (
+            accuracy >= baseline_accuracy
+        ), f"モデルの精度がベースライン({baseline_accuracy:.4f})より低下しています: {accuracy:.4f}"
     else:
         print("ベースライン精度が存在しないため、初回登録します。")
 
