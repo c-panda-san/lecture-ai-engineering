@@ -1,4 +1,3 @@
-import pytest
 from sns_analyzer import llm
 
 
