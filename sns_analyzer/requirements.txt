@@ -1,0 +1,10 @@
+streamlit
+pyngrok
+praw
+python-dotenv
+transformers
+torch
+sentence-transformers
+wordcloud
+matplotlib
+textblob
