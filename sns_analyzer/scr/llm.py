@@ -4,7 +4,7 @@
 from sentence_transformers import SentenceTransformer, util
 
 # セマンティック検索用モデル
-semantic_model = SentenceTransformer('paraphrase-multilingual-MiniLM-L12-v2')
+semantic_model = SentenceTransformer("paraphrase-multilingual-MiniLM-L12-v2")
 
 
 def semantic_search(posts, keyword, top_k=10):
@@ -29,6 +29,7 @@ def semantic_search(posts, keyword, top_k=10):
 
 def analyze_sentiment(posts, lang="auto"):
     from textblob import TextBlob
+
     results = []
     for post in posts:
         text = post["title"] + " " + (post["selftext"] or "")

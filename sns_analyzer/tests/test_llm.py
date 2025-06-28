@@ -18,7 +18,11 @@ def test_analyze_sentiment():
     posts = [
         {"title": "I love pandas", "selftext": "", "url": "http://example.com"},
         {"title": "Pandas are terrible", "selftext": "", "url": "http://example.com"},
-        {"title": "Just some neutral post", "selftext": "", "url": "http://example.com"},
+        {
+            "title": "Just some neutral post",
+            "selftext": "",
+            "url": "http://example.com",
+        },
     ]
     results = llm.analyze_sentiment(posts)
     assert isinstance(results, list)
