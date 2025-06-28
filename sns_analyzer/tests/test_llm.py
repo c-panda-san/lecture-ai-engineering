@@ -1,4 +1,4 @@
-from sns_analyzer import llm
+from sns_analyzer.scr import llm
 
 
 def test_semantic_search_basic():
