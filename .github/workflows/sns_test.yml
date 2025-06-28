@@ -35,7 +35,7 @@ jobs:
 
     - name: Run mypy (型チェック)
       run: |
-        mypy sns_analyzer/ --ignore-missing-imports
+        mypy sns_analyzer/ --ignore-missing-imports --explicit-package-bases
 
     - name: Run pytest (単体テスト実行)
       run: |
