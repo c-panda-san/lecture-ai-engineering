@@ -2,11 +2,7 @@ name: Lint and Check
 
 on:
   push:
-    paths:
-      - 'sns_analyzer/**'
-  pull_request:
-    paths:
-      - 'sns_analyzer/**'
+    branches: [ main, master ]
 
 jobs:
   build:
