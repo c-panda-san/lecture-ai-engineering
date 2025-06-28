@@ -3,8 +3,8 @@ import datetime
 import config
 from llm import analyze_sentiment, semantic_search
 from visualize import plot_wordcloud
-import matplotlib.pyplot as plt
 import traceback
+import matplotlib.pyplot as plt
 
 
 def dashboard():
@@ -18,6 +18,7 @@ def dashboard():
         st.session_state["page"] = "create_job"
         st.rerun()
 
+
 def create_job():
     st.title("新規リスニングジョブ作成")
     st.caption("※検索では最大100件のReddit投稿から、関連性の高い投稿を抽出します。期間やキーワードによっては少数の結果になる場合があります。")
@@ -29,8 +30,10 @@ def create_job():
         start_date = st.date_input("開始日", value=datetime.date.today() - datetime.timedelta(days=30), key="start_date")
     with col2:
         end_date = st.date_input("終了日", value=datetime.date.today(), key="end_date")
-    analysis_method = st.selectbox("分析手法", ["感情分析（ポジ/ネガ判定）"], key="analysis_method")
-    sns_type = st.selectbox("対象SNS", ["Reddit"], key="sns_type")
+    analysis_method = st.selectbox("分析手法", ["感情分析（ポジ/ネガ判定）"])
+    st.write(f"選択された分析手法: {analysis_method}")
+    sns_type = st.selectbox("対象SNS", ["Reddit"])
+    st.write(f"選択された対象SNS: {sns_type}")
     output_format = st.selectbox("出力形式", ["棒グラフ", "円グラフ", "WordCloud", "テキスト（箇条書き）"], key="output_format")
     st.caption("※出力形式は、再取得せずに切り替えることができます。")
 
@@ -120,7 +123,6 @@ def create_job():
             st.bar_chart({"positive": pos, "negative": neg, "neutral": neu})
 
         elif output_format == "円グラフ":
-            import matplotlib.pyplot as plt
             labels = ["positive", "negative", "neutral"]
             sizes = [pos, neg, neu]
             fig, ax = plt.subplots(figsize=(1, 1))  # ← サイズ拡大

@@ -1,6 +1,7 @@
 # visualize.py
 import os
 
+
 def plot_wordcloud(texts, width=400, height=200):
     import streamlit as st
     from wordcloud import WordCloud

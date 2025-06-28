@@ -1,10 +1,11 @@
-#llm.py
+# llm.py
 
 # 意味検索
 from sentence_transformers import SentenceTransformer, util
 
 # セマンティック検索用モデル
 semantic_model = SentenceTransformer('paraphrase-multilingual-MiniLM-L12-v2')
+
 
 def semantic_search(posts, keyword, top_k=10):
     if not posts:
@@ -24,6 +25,7 @@ def semantic_search(posts, keyword, top_k=10):
     cos_scores = util.cos_sim(query_vec, post_vecs)[0]
     top_results = cos_scores.argsort(descending=True)[:top_k]
     return [posts[i] for i in top_results]
+
 
 def analyze_sentiment(posts, lang="auto"):
     from textblob import TextBlob

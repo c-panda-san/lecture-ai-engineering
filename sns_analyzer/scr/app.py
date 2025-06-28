@@ -14,8 +14,8 @@ if "page" not in st.session_state:
 
 current_index = list(page_options.values()).index(st.session_state["page"])
 selected = st.sidebar.radio(
-    "画面を選択してください", 
-    list(page_options.keys()), 
+    "画面を選択してください",
+    list(page_options.keys()),
     index=current_index
 )
 

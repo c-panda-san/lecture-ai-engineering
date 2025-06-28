@@ -1,6 +1,7 @@
 # scraper.py
 import praw
 
+
 def fetch_reddit_posts(keyword, client_id, client_secret, user_agent, limit=50):
     reddit = praw.Reddit(
         client_id=client_id,
