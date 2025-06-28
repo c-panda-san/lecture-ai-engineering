@@ -24,9 +24,9 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
+        pip install -r sns_analyzer/requirements.txt
         pip install flake8
 
     - name: Run flake8 (Pythonスタイルチェック)
       run: |
-        flake8 scr/ --ignore=E501
+        flake8 sns_analyzer/ --ignore=E501
