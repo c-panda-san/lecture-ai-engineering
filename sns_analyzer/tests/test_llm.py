@@ -8,6 +8,7 @@ def test_semantic_search_basic():
     ]
     keyword = "panda"
     results = llm.semantic_search(posts, keyword)
+    print("Search results:", results)
     assert isinstance(results, list)
     assert len(results) <= 2
     for res in results:
