@@ -18,6 +18,30 @@ Redditの投稿からSNSの声を収集・分析し、感情やキーワード�
 - transformers, sentence-transformers
 - wordcloud, matplotlib
 
+## 📁 ディレクトリ構成
+lecture-ai-engineering/<br>
+├── sns_analyze/<br>
+│   ├── scr/<br>
+│   │   ├── app.py<br>
+│   │   ├── config.py<br>
+│   │   ├── llm.py<br>
+│   │   ├── scraper.py<br>
+│   │   ├── ui.py<br>
+│   │   └── visualize.py<br>
+│   ├── fonts/<br>
+│   │   └── NotoSansCJKjp-Regular.otf<br>
+│   ├── tests/<br>
+│   │   ├── test_config.py<br>
+│   │   ├── test_llm.py<br>
+│   │   ├── test_scraper.py<br>
+│   │   └── test_visualize.py<br>
+│   ├── requirements.txt<br>
+│   ├── .env.example<br>
+│   └── LICENSE.txt<br>
+├── .github/<br>
+│   └── workflows/<br>
+│       └── sns_test.yml<br>
+
 ## 🔧 セットアップ手順
 
 ### 1. このリポジトリをクローン
